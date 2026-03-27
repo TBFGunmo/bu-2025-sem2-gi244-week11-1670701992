@@ -660,6 +660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   forcalPoint: {fileID: 1838255227}
+  hasPowerUp: 0
 --- !u!54 &1231960639
 Rigidbody:
   m_ObjectHideFlags: 0
