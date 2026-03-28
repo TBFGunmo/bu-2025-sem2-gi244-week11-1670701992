@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerStun
       objectReference: {fileID: 0}
+    - target: {fileID: 3709808119504899638, guid: 193bc8da7b75619498dc24631df3500c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1209,6 +1213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2000910670}
   - component: {fileID: 2000910669}
+  - component: {fileID: 2000910671}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -1223,7 +1228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000910668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c7814f05ee54a743b9a1734dcbef0e3, type: 3}
   m_Name: 
@@ -1257,6 +1262,53 @@ Transform:
   - {fileID: 1651429377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2000910671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000910668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837aacf3e0cfdf24585ac86bac92699d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
+  spawnPoints:
+  - {fileID: 1455485778}
+  - {fileID: 1934027255}
+  - {fileID: 1740426194}
+  - {fileID: 190401264}
+  - {fileID: 1176266729}
+  - {fileID: 1651429377}
+  RandomCurrentSpawnPoint: 0
+  PowerUpPrefabs:
+  - {fileID: 3709808119504899638, guid: 193bc8da7b75619498dc24631df3500c, type: 3}
+  - {fileID: 3709808119504899638, guid: 8cd96a1609dc5a04f8f54162c32cab4a, type: 3}
+  numberOfRandomPowerUp: 0
+  enemyPrefab: {fileID: 8279026461862980053, guid: bb420f9ac2083cd4ea138531408225e7, type: 3}
+  totalWave: 4
+  spawnDatas:
+  - totalSpawnEnemies: 4
+    numberOfRandomSpawnPoint: 1
+    delayStart: 2
+    spawnInterval: 2
+    numberOfPowerUp: 0
+  - totalSpawnEnemies: 6
+    numberOfRandomSpawnPoint: 2
+    delayStart: 2
+    spawnInterval: 2
+    numberOfPowerUp: 1
+  - totalSpawnEnemies: 8
+    numberOfRandomSpawnPoint: 4
+    delayStart: 2
+    spawnInterval: 2
+    numberOfPowerUp: 1
+  - totalSpawnEnemies: 10
+    numberOfRandomSpawnPoint: 6
+    delayStart: 5
+    spawnInterval: 0.5
+    numberOfPowerUp: 2
 --- !u!1001 &6806225334679085962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1311,7 +1363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3709808119504899638, guid: 8cd96a1609dc5a04f8f54162c32cab4a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
