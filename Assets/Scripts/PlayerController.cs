@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine powerUpRoutine;
 
+    public GameObject powerUpRing;
+    private Animator powerUpAni;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,6 +29,16 @@ public class PlayerController : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         smashAction = InputSystem.actions.FindAction("Smash");
         breakAction = InputSystem.actions.FindAction("Break");
+
+        powerUpAni = GameObject.Find("SelectionRing_02").GetComponent<Animator>();
+
+
+
+    }
+
+    private void Start()
+    {
+        powerUpRing.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +52,16 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
         }
 
+        if (hasPowerUp) 
+        {
+        
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+        powerUpRing.transform.position = transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -70,14 +93,25 @@ public class PlayerController : MonoBehaviour
                 StopCoroutine(powerUpRoutine);
             }
 
+         
+
             powerUpRoutine = StartCoroutine(PowerUpCooldown());
+            
         }
     }
 
     IEnumerator PowerUpCooldown()
     {
+        powerUpRing.SetActive(true);
+        yield return null;
+        powerUpAni.SetBool("hasPowerUp", true);
+
+
         yield return new WaitForSeconds(10f);
         hasPowerUp = false;
+        powerUpAni.SetBool("hasPowerUp", false);
+
+        powerUpRing.SetActive(false);
 
     }
 
