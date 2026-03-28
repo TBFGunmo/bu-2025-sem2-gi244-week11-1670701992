@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public GameObject powerUpRing;
     private Animator powerUpAni;
 
+    public bool activeStun = false;
+    private Coroutine powerStunRoutine;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -98,7 +100,28 @@ public class PlayerController : MonoBehaviour
             powerUpRoutine = StartCoroutine(PowerUpCooldown());
             
         }
-    }
+
+
+        if (other.gameObject.CompareTag("PowerStun"))                // <<<<<<<<<<<<<<<<<<<<<  stun powerUp
+        {
+            //activeStun = true;
+            //Destroy(other.gameObject);
+            StunPowerUp stunPP = other.gameObject.GetComponent<StunPowerUp>();
+            if (stunPP != null) 
+            {
+                stunPP.ActiveStun();
+                if (powerStunRoutine != null)
+                {
+                    StopCoroutine(powerStunRoutine);
+                }
+
+                powerStunRoutine = StartCoroutine(PowerStunCooldown());
+            }
+
+            
+        }
+
+        }
 
     IEnumerator PowerUpCooldown()
     {
@@ -113,6 +136,12 @@ public class PlayerController : MonoBehaviour
 
         powerUpRing.SetActive(false);
 
+    }
+
+    IEnumerator PowerStunCooldown()  // <<<<<<<<<<<<<<<<<<<<<  stun powerUp
+    {
+        yield return new WaitForSeconds(5f);
+        activeStun = false;
     }
 
 }

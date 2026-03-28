@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PowerUp
   - Enemy
+  - PowerStun
   layers:
   - Default
   - TransparentFX
